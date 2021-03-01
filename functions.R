@@ -40,9 +40,54 @@ get_nGene <- function(reported.snp.VEP, VEP.rename, VEP.order) {
 }
 
 # eQTL (eGene)
-get_eGene() <- function() {
-  # do something
-} 
+get_eGene <- function(input.df) {
+    # prepare SNP to gene df
+    # eqtl.df <- read.table("/Users/zxli/Dropbox/Projects/CPloci/eQTL/2019-12-11-cis-eQTLsFDR0.05-ProbeLevel-CohortInfoRemoved-BonferroniAdded.txt", header = T, stringsAsFactors = F)
+
+    # # head(eqtl.df[,c("SNP","GeneSymbol")])
+
+    # snp.gene.eQTLGen <- eqtl.df[,c("SNP","GeneSymbol")]
+    # dim(snp.gene.eQTLGen)
+
+    # snp.gene.eQTLGen <- snp.gene.eQTLGen[grep("^rs", snp.gene.eQTLGen$SNP),]
+    # dim(snp.gene.eQTLGen)
+
+    # # print(load("snp.gene.eQTLGen.Rdata"))
+
+    # length(unique(snp.gene.eQTLGen$SNP))
+
+    # # too slow
+    # # snp.gene.eQTLGen.merged <- data.frame()
+    # # for (i in unique(snp.gene.eQTLGen$SNP)) {
+    # #     tmp <- subset(snp.gene.eQTLGen, SNP==i)
+    # #     tmp.genes <- paste(tmp$GeneSymbol, collapse = ",")
+    # #     tmp.df <- data.frame(rsid=i, gene=tmp.genes)
+    # #     snp.gene.eQTLGen.merged <- rbind(snp.gene.eQTLGen.merged, tmp.df)
+    # # }
+
+    # dim(snp.gene.eQTLGen)
+    # snp.gene.eQTLGen <- snp.gene.eQTLGen[!duplicated(snp.gene.eQTLGen),]
+    # dim(snp.gene.eQTLGen)
+
+    # # head(snp.gene.eQTLGen)
+
+    # library(dplyr)
+
+    # snp.gene.eQTLGen.merged <- snp.gene.eQTLGen %>% group_by(SNP) %>%
+    #     summarize(genes = paste(GeneSymbol, collapse = ','))
+
+    # rownames(snp.gene.eQTLGen.merged) <- snp.gene.eQTLGen.merged$SNP
+
+    # snp.gene.eQTLGen.merged <- as.data.frame(snp.gene.eQTLGen.merged)
+
+    # save(snp.gene.eQTLGen, snp.gene.eQTLGen.merged, file = "snp.gene.eQTLGen.Rdata")
+    
+    print(load("snp.gene.eQTLGen.Rdata"))
+    input.df$eGene <- snp.gene.eQTLGen.merged[input.df$rsid,]
+    # replace NA
+    input.df[is.na(input.df$eGene),]$eGene <- "-"
+    input.df
+}
 
 # Conformation (cGene)
 get_cGene() <- function() {
