@@ -7,6 +7,10 @@ Genomic predictors and Annotation predictors
 
 ![](https://img2020.cnblogs.com/blog/785692/202103/785692-20210301154201773-667409110.png)
 
+general input: a dataframe, rowname is SNP rsid, rsid column is rsid
+
+general output: add annotation to the columns one by one, like nGene, eGene and cGene
+
 # Genomic predictors
 - get_nGene(), Nearby (nGene)
 - get_eGene(), eQTL (eGene)
@@ -17,7 +21,7 @@ Genomic predictors and Annotation predictors
 - get_pGene(), Phenotype (pGene)
 - get_dGene(), Disease (dGene)
 
-# other functions
+# Other functions
 - extend_LD(), get all high LD (R2>0.8) SNPs
 
 # get_nGene
