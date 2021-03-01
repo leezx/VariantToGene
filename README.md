@@ -26,7 +26,7 @@ general output: add annotation to the columns one by one, like nGene, eGene and 
 
 # get_nGene
 input:
-- rsid, example: all.reported.snp.LD.merged.txt
+- rsid df, a dataframe, rowname is SNP rsid, rsid column is rsid
 
 data preparation:
 - go to VEP website: https://asia.ensembl.org/Tools/VEP
@@ -39,6 +39,26 @@ function pipeline:
 
 output:
 - unique function annotation of each SNP - a dataframe
+- nGene_type: Splicing
+- nGene: MYSM1
+- nGene_biotype: protein_coding
+
+# get_eGene
+input:
+- rsid df, a dataframe, rowname is SNP rsid, rsid column is rsid
+
+data preparation:
+- go to eQTLGen download eQTL data: https://www.eqtlgen.org/cis-eqtls.html
+
+function pipeline:
+- simply match rsid to multiple genes
+
+output:
+- eGene: geneA,geneB
+
+# get_cGene
+input:
+- rsid df, a dataframe, rowname is SNP rsid, rsid column is rsid
 
 # extend_LD
 input:
