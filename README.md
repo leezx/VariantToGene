@@ -28,8 +28,22 @@ data preparation:
 - go to VEP website: https://asia.ensembl.org/Tools/VEP
 - get the VEP annotation result, example: VEP/all.reported.snp.LD.merged_VEP.txt
 
-function pipeline
+function pipeline:
 - simplify columns
 - rename categories from VEP
 - remove duplicate according to priority
+
+output:
+- unique function annotation of each SNP - a dataframe
+
+# extend_LD
+input:
+- rsid, example: unique(asso.df$SNPS)
+
+function pipeline:
+- library("LDlinkR")
+- LDproxy()
+
+output:
+- all high LD SNPs - a dataframe
 
