@@ -11,6 +11,10 @@ general input: a dataframe, rowname is SNP rsid, rsid column is rsid
 
 general output: add annotation to the columns one by one, like nGene, eGene and cGene
 
+# prepare curated database
+- this is the most important part
+- the functions are very simple
+
 # Genomic predictors
 - get_nGene(), Nearby (nGene)
 - get_eGene(), eQTL (eGene)
